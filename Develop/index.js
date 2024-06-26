@@ -82,7 +82,51 @@ function writeToFile(fileName, data) {
     fs.writeFileSync(path.join(process.cwd(), fileName), data);
 }
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions).then(answers => {
+        // Generate README content
+        const content = 
+`# ${answers.title}
+
+${licenses[answers.license].badge}
+
+## Description
+${answers.description}
+
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
+
+## Installation
+${answers.installation}
+
+## Usage
+${answers.usage}
+
+## Contributing
+${answers.contributing}
+
+## Tests
+${answers.tests}
+
+## License
+This project is licensed under the [${answers.license}](${licenses[answers.license].link}) license.
+
+## Questions
+If you have any questions, please reach out to me:
+- GitHub: [@${answers.github}](https://github.com/${answers.github})
+- Email: ${answers.email}
+`;
+
+        
+        writeToFile('README.md', content.trim());
+
+        console.log('README.md has been generated');
+    });
+}
 
 // Function call to initialize app
 init();
