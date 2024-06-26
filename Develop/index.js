@@ -1,6 +1,31 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs= require('fs');
+const path = require('path');
+
+// license options
+const licenses = {
+    'MIT': {
+        badge: '![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)',
+        link: 'https://opensource.org/licenses/MIT'
+    },
+    'Apache 2.0': {
+        badge: '![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)',
+        link: 'https://opensource.org/licenses/Apache-2.0'
+    },
+    'GPL 3.0': {
+        badge: '![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)',
+        link: 'https://www.gnu.org/licenses/gpl-3.0'
+    },
+    'BSD 3-Clause': {
+        badge: '![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)',
+        link: 'https://opensource.org/licenses/BSD-3-Clause'
+    },
+    'None': {
+        badge: '',
+        link: ''
+    }
+};
 // TODO: Create an array of questions for user input
 const questions = [
     {
